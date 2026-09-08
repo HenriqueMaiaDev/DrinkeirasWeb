@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato | Drinkeiras</title>
+
+  <!-- Google Fonts: Zen Dots + Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Zen+Dots&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="contato-page">
+
+<!-- NAVEGAÇÃO SUPERIOR COM LOGO -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html#topo" class="nav-logo">
+        <img src="images/logo.jpeg" alt="Logo Drinkeiras" class="logo-img-nav">
+      </a>
+      <a href="index.html#topo" class="nav-btn">Início</a>
+      <a href="index.html#galeria" class="nav-btn">Galeria</a>
+      <a href="contato.html" class="nav-btn active nav-btn-highlight">Contato</a>
+    </div>
+  </nav>
+
+  <main class="contato-main">
+    <section class="contact-section">
+      <div class="container">
+        
+        <div class="contact-card reveal">
+          <h1 class="neon-title neon-text-pink contact-title">Fale com as Drinkeiras</h1>
+          <p class="contact-subtitle">
+            Preencha os dados abaixo e receba um orçamento personalizado no seu WhatsApp.
+          </p>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-field">
+              <label for="nome">Seu Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-field">
+              <label for="data">Data do Evento</label>
+              <input type="text" id="data" name="data" placeholder="Ex: 15/11/2026" required>
+            </div>
+
+            <div class="form-field">
+              <label for="detalhes">Detalhes (Tipo de festa, número estimado de convidados)</label>
+              <textarea id="detalhes" name="detalhes" rows="4" placeholder="Conte-nos um pouco sobre a ideia do seu evento..." required></textarea>
+            </div>
+
+            <button type="submit" class="neon-button">Enviar mensagem no WhatsApp</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3 class="neon-text-cyan">Drinkeiras</h3>
+        <p>Mixologia moderna, drinks autorais e alta coquetelaria para transformar eventos em momentos memoráveis.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#topo">Início</a></li>
+          <li><a href="index.html#experiencia">A Experiência</a></li>
+          <li><a href="index.html#galeria">Galeria</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-info">
+        <h4>Contato Direto</h4>
+        <p><strong>WhatsApp:</strong> (16) 99999-9999</p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/" target="_blank">@drinkeiras.bar</a></p>
+        <p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Drinkeiras. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botões Flutuantes -->
+  <div class="floating-contact">
+    <a href="https://wa.me/5516999999999" target="_blank" aria-label="WhatsApp" class="neon-float">
+      <img src="images/whats.webp" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="neon-float">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

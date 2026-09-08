@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drinkeiras | High-End Mixology & Bartenders</title>
+
+  <!-- Google Fonts: Zen Dots (Apenas para Títulos Neon) + Outfit (Para o restante do site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Zen+Dots&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- NAVEGAÇÃO SUPERIOR COM LOGO -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html#topo" class="nav-logo">
+        <img src="images/logo.jpeg" alt="Logo Drinkeiras" class="logo-img-nav">
+      </a>
+      <a href="index.html#topo" class="nav-btn active">Início</a>
+      <a href="index.html#galeria" class="nav-btn">Galeria</a>
+      <a href="contato.html" class="nav-btn nav-btn-highlight">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION COM O LOGO EM DESTAQUE -->
+  <header class="hero" id="topo">
+    <img class="hero-bg" src="images/foto-barman-principal.png" alt="Drinkeiras Bar Eventos">
+
+    <div class="hero-content">
+      <!-- Logo Destaque no Centro da Hero -->
+      <div class="hero-logo-wrap">
+        <img src="images/logo.jpeg" alt="Selo Oficial Drinkeiras" class="logo-img-hero">
+      </div>
+
+      <h1 class="nome neon-text-cyan">DRINKEIRAS</h1>
+      <p class="subtitulo-hero neon-style-text">MIXOLOGIA & BARTENDERS DE ALTA PERFORMANCE</p>
+
+      <div class="sobre-box">
+        <p>
+          Transformamos casamentos, festas de aniversário e eventos corporativos em experiências sensoriais inesquecíveis. Cocktails autorais, alta mixologia e a energia perfeita para a sua noite.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    
+    <!-- BLOCO 1: A ARTE DA MIXOLOGIA -->
+    <section class="story-block reveal" id="experiencia">
+      <div class="container story-grid">
+        <figure class="story-image drink-card tilt-effect reveal">
+          <img src="images/equipe.jpeg" alt="Equipe Drinkeiras em Ação" class="drink-zoom">
+        </figure>
+
+        <div class="story-text reveal">
+          <h2 class="neon-title neon-text-pink">A Arte da Coquetelaria</h2>
+          <p>
+            Com uma equipe especializada na criação de cartas de drinks exclusivas para eventos de alto padrão, levamos para a sua festa o equilíbrio perfeito entre sabor, sofisticação e espetáculo visual.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 2: GALERIA DE DRINKS E EVENTOS -->
+    <section class="galeria-section reveal" id="galeria">
+      <div class="container">
+        <div class="secao-header text-center">
+          <h2 class="neon-title neon-text-cyan">Conheça o Trabalho das Drinkeiras</h2>
+          <p class="secao-subtitulo">
+            Apresentações instagramáveis, técnicas de defumação e espumas artesanais. Passe o mouse sobre as fotos e sinta o conceito!
+          </p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="galeria-filtros">
+          <button class="filtro-btn active" data-filter="todos">Todos</button>
+          <button class="filtro-btn" data-filter="drinks">Drinks Autorais</button>
+          <button class="filtro-btn" data-filter="eventos">Eventos & Performance</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="galeria-grid">
+          <div class="galeria-item drinks reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/drink1.jpg" alt="Drink Autoral Drinkeiras" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Tropical Neon</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item eventos reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/evento1.jpg" alt="Drinkeiras no comando do bar" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Eventos</span>
+                <h3 class="neon-style-text">Bar em Alta Performance</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item drinks reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/drink2.jpg" alt="Coquetel defumado Drinkeiras" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Smokey Gin</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item eventos reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/evento2.jpg" alt="Estrutura de Bar Drinkeiras" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Eventos</span>
+                <h3 class="neon-style-text">Estrutura Neon VIP</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item drinks reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/drink3.jpg" alt="Drink com espuma artesanal" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Velvet Citrus</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item eventos reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/evento3.jpg" alt="Atendimento no evento" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Eventos</span>
+                <h3 class="neon-style-text">Energia & Nightlife</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 3: BANNER INFORMATIVO -->
+    <section class="info-fixed">
+      <div class="container">
+        <div class="info-card reveal">
+          <h2 class="neon-title neon-text-cyan">Estrutura Completa para Seu Evento</h2>
+          <p style="margin-top: 16px;">
+            Cuidamos de tudo: estrutura modular de bar, insumos premium de alta qualidade, cartas de drinks 100% personalizadas e uma equipe treinada para encantar seus convidados do primeiro ao último brinde.
+          </p>
+          <a href="contato.html" class="neon-button inline-btn">Solicitar Orçamento</a>
+        </div> 
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3 class="neon-text-cyan">Drinkeiras</h3>
+        <p>Mixologia moderna, drinks autorais e alta coquetelaria para transformar eventos em momentos memoráveis.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html#topo">Início</a></li>
+          <li><a href="index.html#experiencia">A Experiência</a></li>
+          <li><a href="index.html#galeria">Galeria</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-info">
+        <h4>Contato Direto</h4>
+        <p><strong>WhatsApp:</strong> (16) 99999-9999</p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/" target="_blank">@drinkeiras.bar</a></p>
+        <p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Drinkeiras. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botões Flutuantes -->
+  <div class="floating-contact">
+    <a href="https://wa.me/5516999999999" target="_blank" aria-label="WhatsApp" class="neon-float">
+      <img src="images/whats.webp" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="neon-float">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
