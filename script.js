@@ -87,3 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/* Movimento dinâmico dos raios neon conforme o scroll */
+window.addEventListener("scroll", () => {
+  const scrolled = window.scrollY;
+  
+  const ray1 = document.querySelector(".ray-1");
+  const ray2 = document.querySelector(".ray-2");
+  const ray3 = document.querySelector(".ray-3");
+
+  if (ray1 && ray2 && ray3) {
+    ray1.style.transform = `rotate(-35deg) translateX(${scrolled * 0.4}px)`;
+    ray2.style.transform = `rotate(-35deg) translateX(${-scrolled * 0.5}px)`;
+    ray3.style.transform = `rotate(-35deg) translateX(${scrolled * 0.3}px)`;
+  }
+});

@@ -106,17 +106,22 @@ p {
   gap: 20px;
 }
 
+/* Botões do Menu Superior (Fonte Padrão e Limpa) */
 .nav-btn {
   position: relative;
   text-decoration: none;
   color: var(--text-main);
-  font-family: var(--font-title);
-  font-size: 0.9rem;
+  
+  /* Fonte Padrão de Sistema (Clean & Legível) */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  
   padding: 10px 24px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(18, 21, 32, 0.6);
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -124,6 +129,7 @@ p {
 .nav-btn:hover,
 .nav-btn.active {
   color: #000;
+  font-weight: 700;
   background: var(--neon-cyan);
   border-color: var(--neon-cyan);
   box-shadow: var(--shadow-neon-cyan);
@@ -160,10 +166,10 @@ p {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Garante que preencha sem distorcer */
   object-position: center;
+  filter: brightness(0.35) contrast(1.15); /* Escurece para dar contraste ao neon */
   z-index: 0;
-  filter: brightness(0.4) contrast(1.15);
 }
 
 .hero::after {
@@ -595,6 +601,53 @@ p {
   object-fit: cover;
   object-position: center 50%; /* Foca na altura dos rostos e balcão */
   filter: contrast(1.1) brightness(1.05); /* Melhora a definição e a luz */
+}
+
+/* Container fixo para os raios de fundo */
+.neon-rays-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Estilo base dos raios neon */
+.neon-ray {
+  position: absolute;
+  height: 2px;
+  width: 60vw;
+  border-radius: 999px;
+  opacity: 0.6;
+  filter: blur(1px);
+  will-change: transform;
+}
+
+/* Raio 1: Ciano no topo */
+.ray-1 {
+  top: 20%;
+  left: -20%;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  transform: rotate(-35deg);
+}
+
+/* Raio 2: Magenta no meio */
+.ray-2 {
+  top: 55%;
+  right: -20%;
+  background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+  box-shadow: 0 0 15px var(--neon-pink);
+  transform: rotate(-35deg);
+}
+
+/* Raio 3: Ciano/Roxo na parte inferior */
+.ray-3 {
+  top: 80%;
+  left: -10%;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+  box-shadow: 0 0 15px var(--neon-purple);
+  transform: rotate(-35deg);
 }
 
 /* Ajuste Responsivo do Logo no Mobile */
