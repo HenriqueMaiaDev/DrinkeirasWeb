@@ -1,4 +1,103 @@
 /* =========================================
+   EFEITO CORTINA NEON (PAGE TRANSITION)
+========================================= */
+/* Borda/Faixa neon brilhante que cruza a tela */
+
+::view-transition-old(root) {
+  animation: slideOutLeft 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: slideInRight 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  box-shadow: -15px 0 35px var(--neon-cyan), -30px 0 60px var(--neon-pink);
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Ativa a transição entre navegações de páginas diferentes */
+@view-transition {
+  navigation: auto;
+}
+
+/* Personaliza a animação de entrada e saída da tela */
+::view-transition-old(root) {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+::view-transition-new(root) {
+  animation: fadeIn 0.4s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.98); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* Nome de transição único para o logo */
+/* Mapeia o logo para o motor de View Transition */
+.logo-img-nav {
+  view-transition-name: main-brand-logo;
+  contain: layout;
+}
+/* Cortina Neon de Transição */
+/* Previne barras de rolagem indesejadas na transição */
+body {
+  overflow-x: hidden;
+}
+
+/* =========================================
+   CORTINA NEON DIRECIAL (CORRIGIDO)
+========================================= */
+.neon-curtain {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #08090d; /* Fundo escuro do site */
+  z-index: 99999;
+  pointer-events: none;
+  display: none; /* Escondido por padrão para não cobrir a tela */
+  transition: transform 0.38s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Avançando (Direita -> Esquerda): Início para Contato */
+.neon-curtain.to-left {
+  display: block;
+  left: 100%; /* Começa escondido do lado direito */
+  border-left: 4px solid var(--neon-pink);
+  box-shadow: -15px 0 40px var(--neon-pink), -30px 0 70px var(--neon-cyan);
+}
+
+.neon-curtain.to-left.active {
+  transform: translateX(-100%);
+}
+
+/* Voltando (Esquerda -> Direita): Contato para Início */
+.neon-curtain.to-right {
+  display: block;
+  left: -100%; /* Começa escondido do lado esquerdo */
+  border-right: 4px solid var(--neon-cyan);
+  box-shadow: 15px 0 40px var(--neon-cyan), 30px 0 70px var(--neon-pink);
+}
+
+.neon-curtain.to-right.active {
+  transform: translateX(100%);
+}
+
+
+/* =========================================
    1. RESET E VARIÁVEIS DARK NEON
 ========================================= */
 *, *::before, *::after {

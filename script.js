@@ -102,3 +102,49 @@ window.addEventListener("scroll", () => {
     ray3.style.transform = `rotate(-35deg) translateX(${scrolled * 0.3}px)`;
   }
 });
+
+/* Transição Direcional com Cortina Neon */
+document.addEventListener("DOMContentLoaded", () => {
+  const curtain = document.querySelector(".neon-curtain");
+  const navLinks = document.querySelectorAll('a[href*=".html"], .nav-btn, .nav-logo');
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      const targetUrl = link.getAttribute("href");
+      const currentPath = window.location.pathname;
+
+      // Garante a validação da página atual e de destino
+      const isGoingToContato = targetUrl.includes("contato.html");
+      const isAlreadyOnContato = currentPath.includes("contato.html");
+
+      // Só dispara a transição se estiver trocando de página
+      if ((isGoingToContato && !isAlreadyOnContato) || (!isGoingToContato && isAlreadyOnContato)) {
+        e.preventDefault();
+
+        if (curtain) {
+          // Limpa animações anteriores
+          curtain.classList.remove("to-left", "to-right", "active");
+
+          // Início -> Contato (Vem da Direita)
+          if (isGoingToContato) {
+            curtain.classList.add("to-left");
+          } 
+          // Contato -> Início (Vem da Esquerda)
+          else {
+            curtain.classList.add("to-right");
+          }
+
+          // Delay milimétrico para o navegador aplicar a classe antes do efeito
+          setTimeout(() => {
+            curtain.classList.add("active");
+          }, 10);
+        }
+
+        // Troca de página assim que a cortina cobre a tela
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 360);
+      }
+    });
+  });
+});
