@@ -773,3 +773,46 @@ p {
   .nome { letter-spacing: 4px; }
   .floating-contact { bottom: 16px; right: 16px; }
 }
+
+/* Espaçamento da página Sobre */
+.sobre-main {
+  padding-top: 100px;
+}
+
+.sobre-section {
+  padding-top: 60px;
+}
+
+.mixologia-section {
+  padding-bottom: 80px;
+}
+
+/* Estilização da Página Sobre (Sem Imagens) */
+.sobre-main {
+  padding-top: 130px;
+  padding-bottom: 80px;
+}
+
+.sobre-content-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(32px, 5vw, 54px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.sobre-text-body {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.sobre-text-body p {
+  color: #e0e6f0;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}

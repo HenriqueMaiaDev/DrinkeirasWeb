@@ -103,46 +103,56 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/* Transição Direcional com Cortina Neon */
+/* Transição Direcional com Cortina Neon + Fade In/Out entre Início, Sobre e Contato */
+/* Transição Direcional com Cortina Neon + Fade In/Out */
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.opacity = "0";
+  document.body.style.transition = "opacity 0.35s ease";
+  
+  requestAnimationFrame(() => {
+    document.body.style.opacity = "1";
+  });
+
   const curtain = document.querySelector(".neon-curtain");
   const navLinks = document.querySelectorAll('a[href*=".html"], .nav-btn, .nav-logo');
 
+  // Mapeamento atualizado da ordem das páginas
+  const pageOrder = {
+    "index.html": 1,
+    "contato.html": 2,
+    "sobre.html": 3
+  };
+
   navLinks.forEach(link => {
     link.addEventListener("click", (e) => {
-      const targetUrl = link.getAttribute("href");
-      const currentPath = window.location.pathname;
+      const targetHref = link.getAttribute("href") || "";
+      const targetPage = targetHref.split("#")[0].split("/").pop() || "index.html";
+      const currentPath = window.location.pathname.split("/").pop() || "index.html";
 
-      // Garante a validação da página atual e de destino
-      const isGoingToContato = targetUrl.includes("contato.html");
-      const isAlreadyOnContato = currentPath.includes("contato.html");
-
-      // Só dispara a transição se estiver trocando de página
-      if ((isGoingToContato && !isAlreadyOnContato) || (!isGoingToContato && isAlreadyOnContato)) {
+      if (targetPage && pageOrder[targetPage] && targetPage !== currentPath) {
         e.preventDefault();
 
+        document.body.style.opacity = "0";
+
         if (curtain) {
-          // Limpa animações anteriores
           curtain.classList.remove("to-left", "to-right", "active");
 
-          // Início -> Contato (Vem da Direita)
-          if (isGoingToContato) {
+          // Avançando no menu (ex: Início -> Contato ou Contato -> Sobre)
+          if (pageOrder[targetPage] > pageOrder[currentPath]) {
             curtain.classList.add("to-left");
           } 
-          // Contato -> Início (Vem da Esquerda)
+          // Voltando no menu (ex: Sobre -> Contato ou Contato -> Início)
           else {
             curtain.classList.add("to-right");
           }
 
-          // Delay milimétrico para o navegador aplicar a classe antes do efeito
           setTimeout(() => {
             curtain.classList.add("active");
           }, 10);
         }
 
-        // Troca de página assim que a cortina cobre a tela
         setTimeout(() => {
-          window.location.href = targetUrl;
+          window.location.href = targetHref;
         }, 360);
       }
     });
