@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `📅 *Data do Evento:* ${data}%0A` +
         `🎉 *Detalhes do Evento:* ${encodeURIComponent(detalhes)}`;
 
-      const numero = "5516999999999";
+      const numero = "5516993892832";
       window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
     });
   }

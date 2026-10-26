@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Drinkeiras | High-End Mixology & Bartenders</title>
+  <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
 
   <!-- Google Fonts: Zen Dots + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,17 +24,17 @@
     <div class="neon-ray ray-3"></div>
   </div>
 
-<!-- NAVEGAÇÃO SUPERIOR -->
-<nav class="top-nav">
-  <div class="nav-container">
-    <a href="index.html#topo" class="nav-logo">
-      <img src="images/logo.jpeg" alt="Logo Drinkeiras" class="logo-img-nav">
-    </a>
-    <a href="index.html#topo" class="nav-btn">Início</a>
-    <a href="contato.html" class="nav-btn nav-btn-highlight">Contato</a>
-    <a href="sobre.html" class="nav-btn">Sobre</a>
-  </div>
-</nav>
+  <!-- NAVEGAÇÃO SUPERIOR -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html#topo" class="nav-logo">
+        <img src="images/logo.jpeg" alt="Logo Drinkeiras" class="logo-img-nav">
+      </a>
+      <a href="index.html#topo" class="nav-btn active">Início</a>
+      <a href="contato.html" class="nav-btn nav-btn-highlight">Contato</a>
+      <a href="sobre.html" class="nav-btn">Sobre</a>
+    </div>
+  </nav>
 
   <!-- HERO SECTION APENAS COM NOME E SUBTÍTULO -->
   <header class="hero" id="topo">
@@ -67,62 +68,79 @@
       </div>
     </section>
 
-    <!-- BLOCO: GALERIA DE DRINKS E EVENTOS -->
+<!-- BLOCO: GALERIA DE DRINKS AUTORAIS -->
     <section class="galeria-section reveal" id="galeria">
       <div class="container">
         <div class="secao-header text-center">
-          <h2 class="neon-title neon-text-cyan">Conheça o Trabalho das Drinkeiras</h2>
+          <h2 class="neon-title neon-text-cyan">Cocktails Autorais & Alta Mixologia</h2>
           <p class="secao-subtitulo">
-            Apresentações instagramáveis, técnicas de defumação e espumas artesanais. Passe o mouse sobre as fotos e sinta o conceito!
+            Apresentações instagramáveis, xaropes artesanais, técnicas de defumação e espumas exclusivas. Passe o mouse sobre os drinks e sinta a experiência!
           </p>
         </div>
 
-        <div class="galeria-filtros">
-          <button class="filtro-btn active" data-filter="todos">Todos</button>
-          <button class="filtro-btn" data-filter="drinks">Drinks Autorais</button>
-          <button class="filtro-btn" data-filter="eventos">Eventos & Performance</button>
-        </div>
-
+        <!-- Grid de Drinks Autorais (6 Cards) -->
         <div class="galeria-grid">
-          <div class="galeria-item drinks reveal">
+          
+          <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/drink1.jpg" alt="Drink Autoral" class="drink-zoom">
+              <img src="images/neonSunset.png" alt="Neon Sunset" class="drink-zoom">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
-                <h3 class="neon-style-text">Drink Autoral</h3>
+                <h3 class="neon-style-text">Neon Sunset</h3>
               </div>
             </div>
           </div>
 
-          <div class="galeria-item eventos reveal">
+          <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/evento1.jpg" alt="Evento" class="drink-zoom">
-              <div class="galeria-overlay">
-                <span class="categoria-tag">Eventos</span>
-                <h3 class="neon-style-text">Performance no Bar</h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="galeria-item drinks reveal">
-            <div class="drink-card tilt-effect">
-              <img src="images/drink2.jpg" alt="Drink Autoral" class="drink-zoom">
+              <img src="images/cyberMule.png" alt="Cyber Mule" class="drink-zoom">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
-                <h3 class="neon-style-text">Drink Autoral</h3>
+                <h3 class="neon-style-text">Cyber Mule</h3>
               </div>
             </div>
           </div>
 
-          <div class="galeria-item eventos reveal">
+          <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/evento2.jpg" alt="Evento" class="drink-zoom">
+              <img src="images/tropicalSmoked.png" alt="Tropical Smoked" class="drink-zoom">
               <div class="galeria-overlay">
-                <span class="categoria-tag">Eventos</span>
-                <h3 class="neon-style-text">Estrutura de Bar</h3>
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Tropical Smoked</h3>
               </div>
             </div>
           </div>
+
+          <div class="galeria-item reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/magentaVelvet.png" alt="Magenta Velvet" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Magenta Velvet</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/tonic.png" alt="Electric Tonic" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Electric Tonic</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria-item reveal">
+            <div class="drink-card tilt-effect">
+              <img src="images/nightPassion.png" alt="Nightlife Passion" class="drink-zoom">
+              <div class="galeria-overlay">
+                <span class="categoria-tag">Drink Autoral</span>
+                <h3 class="neon-style-text">Nightlife Passion</h3>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -153,20 +171,20 @@
         <h4>Navegação</h4>
         <ul>
           <li><a href="index.html#topo">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
           <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
         </ul>
       </div>
 
       <div class="footer-info">
         <h4>Contato Direto</h4>
-        <p><strong>WhatsApp:</strong> (16) 99999-9999</p>
+        <p><strong>WhatsApp:</strong> (16) 99389-2832</p>
         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank">@drinkeiras.bar</a></p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 Drinkeiras. Todos os direitos reservados</p>
+      <p>© 2026 Drinkeiras. Todos os direitos reservados.</p>
     </div>
   </footer>
 

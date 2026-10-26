@@ -816,3 +816,43 @@ p {
   font-size: 1.25rem;
   line-height: 1.8;
 }
+/* =========================================
+   10. SEÇÃO FAQ (PÁGINA DE CONTATO)
+========================================= */
+.faq-container {
+  margin-top: 60px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.faq-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.faq-card:hover {
+  border-color: var(--neon-cyan);
+  transform: translateY(-4px);
+}
+
+.faq-question {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  color: var(--neon-pink);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.faq-answer {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
