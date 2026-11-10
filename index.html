@@ -4,7 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Drinkeiras | High-End Mixology & Bartenders</title>
+  <meta name="description" content="Drinkeiras: bartenders e alta mixologia para casamentos, formaturas e eventos em Ribeirão Preto e região.">
   <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Drinkeiras">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Drinkeiras | Mixologia & Bartenders para Eventos">
+  <meta property="og:description" content="Drinks autorais e bar completo para casamentos, formaturas e eventos em Ribeirão Preto e região.">
+  <meta property="og:url" content="https://henriquemaiadev.github.io/DrinkeirasWeb/">
+  <meta property="og:image" content="https://henriquemaiadev.github.io/DrinkeirasWeb/images/og-capa.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#08090d">
 
   <!-- Google Fonts: Zen Dots + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,16 +52,28 @@
 
   <!-- HERO SECTION APENAS COM NOME E SUBTÍTULO -->
   <header class="hero" id="topo">
-    <img class="hero-bg" src="images/mainSection.png" alt="Drinkeiras Bar Eventos">
+    <img class="hero-bg" src="images/mainSection.webp" alt="Drinkeiras Bar Eventos">
 
     <div class="hero-content">
       <div class="hero-logo-wrap">
         <img src="images/logo.jpeg" alt="Selo Oficial Drinkeiras" class="logo-img-hero">
       </div>
 
-      <h1 class="nome neon-text-cyan">DRINKEIRAS</h1>
+      <h1 class="nome neon-text-cyan neon-flicker">DRINKEIRAS</h1>
       <p class="subtitulo-hero neon-style-text">MIXOLOGIA & BARTENDERS DE ALTA PERFORMANCE</p>
     </div>
+
+    <!-- Bolhas subindo (criadas pelo script.js) -->
+    <div class="hero-bubbles" aria-hidden="true"></div>
+
+    <!-- Luz que segue o mouse -->
+    <div class="hero-spotlight" aria-hidden="true"></div>
+
+    <!-- Indicador de rolagem -->
+    <a href="#experiencia" class="scroll-cue" aria-label="Rolar para o conteúdo">
+      <span class="scroll-cue-text">Role para descobrir</span>
+      <span class="scroll-cue-arrow"></span>
+    </a>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
@@ -56,7 +82,7 @@
     <section class="story-block reveal" id="experiencia">
       <div class="container story-grid">
         <figure class="story-image drink-card tilt-effect reveal">
-          <img src="images/equipe.jpeg" alt="Equipe Drinkeiras em Ação" class="drink-zoom">
+          <img src="images/equipe.webp" alt="Equipe Drinkeiras em Ação" class="drink-zoom" loading="lazy">
         </figure>
 
         <div class="story-text reveal">
@@ -68,7 +94,29 @@
       </div>
     </section>
 
-<!-- BLOCO: GALERIA DE DRINKS AUTORAIS -->
+    <!-- BLOCO: NÚMEROS (contadores animados) -->
+    <section class="stats-section" id="numeros" aria-label="Drinkeiras em números">
+      <div class="container stats-grid">
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="100" data-prefix="+">0</span>
+          <span class="stat-label">Eventos realizados</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="6">0</span>
+          <span class="stat-label">Drinks autorais</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="40" data-prefix="+" data-suffix=" mil">0</span>
+          <span class="stat-label">Drinks servidos</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="100" data-suffix="%">0</span>
+          <span class="stat-label">Cartas personalizadas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO: GALERIA DE DRINKS AUTORAIS -->
     <section class="galeria-section reveal" id="galeria">
       <div class="container">
         <div class="secao-header text-center">
@@ -83,7 +131,7 @@
           
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/neonSunset.png" alt="Neon Sunset" class="drink-zoom">
+              <img src="images/neonSunset.webp" alt="Neon Sunset" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Neon Sunset</h3>
@@ -93,7 +141,7 @@
 
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/cyberMule.png" alt="Cyber Mule" class="drink-zoom">
+              <img src="images/cyberMule.webp" alt="Cyber Mule" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Cyber Mule</h3>
@@ -103,7 +151,7 @@
 
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/tropicalSmoked.png" alt="Tropical Smoked" class="drink-zoom">
+              <img src="images/tropicalSmoked.webp" alt="Tropical Smoked" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Tropical Smoked</h3>
@@ -113,7 +161,7 @@
 
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/magentaVelvet.png" alt="Magenta Velvet" class="drink-zoom">
+              <img src="images/magentaVelvet.webp" alt="Magenta Velvet" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Magenta Velvet</h3>
@@ -123,7 +171,7 @@
 
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/tonic.png" alt="Electric Tonic" class="drink-zoom">
+              <img src="images/tonic.webp" alt="Electric Tonic" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Electric Tonic</h3>
@@ -133,7 +181,7 @@
 
           <div class="galeria-item reveal">
             <div class="drink-card tilt-effect">
-              <img src="images/nightPassion.png" alt="Nightlife Passion" class="drink-zoom">
+              <img src="images/nightPassion.webp" alt="Nightlife Passion" class="drink-zoom" loading="lazy">
               <div class="galeria-overlay">
                 <span class="categoria-tag">Drink Autoral</span>
                 <h3 class="neon-style-text">Nightlife Passion</h3>
@@ -145,10 +193,26 @@
       </div>
     </section>
 
+    <!-- FAIXAS INFINITAS COM OS NOMES DOS DRINKS (o conteúdo é repetido 2x para o loop não ter emenda) -->
+    <div class="faixas" aria-hidden="true">
+      <div class="faixa faixa-rosa">
+        <div class="faixa-trilho">
+          <span>Neon Sunset</span><i>✦</i><span>Cyber Mule</span><i>✦</i><span>Tropical Smoked</span><i>✦</i><span>Magenta Velvet</span><i>✦</i><span>Electric Tonic</span><i>✦</i><span>Nightlife Passion</span><i>✦</i>
+          <span>Neon Sunset</span><i>✦</i><span>Cyber Mule</span><i>✦</i><span>Tropical Smoked</span><i>✦</i><span>Magenta Velvet</span><i>✦</i><span>Electric Tonic</span><i>✦</i><span>Nightlife Passion</span><i>✦</i>
+        </div>
+      </div>
+      <div class="faixa faixa-ciano">
+        <div class="faixa-trilho">
+          <span>Casamentos</span><i>🍸</i><span>Formaturas</span><i>🍸</i><span>Aniversários</span><i>🍸</i><span>Corporativos</span><i>🍸</i><span>Festas</span><i>🍸</i><span>Open Bar</span><i>🍸</i>
+          <span>Casamentos</span><i>🍸</i><span>Formaturas</span><i>🍸</i><span>Aniversários</span><i>🍸</i><span>Corporativos</span><i>🍸</i><span>Festas</span><i>🍸</i><span>Open Bar</span><i>🍸</i>
+        </div>
+      </div>
+    </div>
+
     <!-- BANNER INFORMATIVO -->
     <section class="info-fixed">
       <div class="container">
-        <div class="info-card reveal">
+        <div class="info-card borda-giratoria reveal">
           <h2 class="neon-title neon-text-cyan">Estrutura Completa para Seu Evento</h2>
           <p style="margin-top: 16px;">
             Cuidamos de tudo: estrutura modular de bar, insumos premium de alta qualidade, cartas de drinks 100% personalizadas e uma equipe treinada para encantar seus convidados do primeiro ao último brinde.
@@ -178,8 +242,8 @@
 
       <div class="footer-info">
         <h4>Contato Direto</h4>
-        <p><strong>WhatsApp:</strong> (16) 99389-2832</p>
-        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank">@drinkeiras.bar</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5516993892832" target="_blank" rel="noopener">(16) 99389-2832</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" rel="noopener">@drinkeiras.bar</a></p>
       </div>
     </div>
 
@@ -189,11 +253,11 @@
   </footer>
 
   <div class="floating-contact">
-    <a href="https://wa.me/5516993892832" target="_blank" aria-label="WhatsApp" class="neon-float">
-      <img src="images/whats.webp" alt="WhatsApp">
+    <a href="https://wa.me/5516993892832" target="_blank" rel="noopener" aria-label="WhatsApp" class="neon-float">
+      <img src="images/whats.webp" alt="">
     </a>
-    <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" aria-label="Instagram" class="neon-float">
-      <img src="images/instagram.png" alt="Instagram">
+    <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" rel="noopener" aria-label="Instagram" class="neon-float">
+      <img src="images/instagram.webp" alt="">
     </a>
   </div>
 

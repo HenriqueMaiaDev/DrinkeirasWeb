@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- No GitHub Pages esta página aparece em QUALQUER endereço errado
+       (ex: /DrinkeirasWeb/pasta/qualquer). O <base> garante que o CSS,
+       as imagens e os links continuem achando a raiz do site. -->
+  <script>
+    if (location.hostname.endsWith("github.io")) {
+      document.write('<base href="/' + location.pathname.split("/")[1] + '/">');
+    }
+  </script>
+
+  <title>Página não encontrada | Drinkeiras</title>
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+  <meta name="theme-color" content="#08090d">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Zen+Dots&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="page-404">
+  <div class="neon-curtain"></div>
+
+  <div class="neon-rays-container">
+    <div class="neon-ray ray-1"></div>
+    <div class="neon-ray ray-2"></div>
+    <div class="neon-ray ray-3"></div>
+  </div>
+
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html#topo" class="nav-logo">
+        <img src="images/logo.jpeg" alt="Logo Drinkeiras" class="logo-img-nav">
+      </a>
+      <a href="index.html#topo" class="nav-btn">Início</a>
+      <a href="contato.html" class="nav-btn nav-btn-highlight">Contato</a>
+      <a href="sobre.html" class="nav-btn">Sobre</a>
+    </div>
+  </nav>
+
+  <main class="erro-main">
+    <div class="erro-card">
+      <!-- Taça que tomba e derrama -->
+      <div class="erro-taca" aria-hidden="true">
+        <span class="taca">🍸</span>
+        <span class="gota g1"></span>
+        <span class="gota g2"></span>
+        <span class="gota g3"></span>
+      </div>
+
+      <h1 class="erro-codigo neon-text-pink neon-flicker">404</h1>
+      <h2 class="neon-title neon-text-cyan erro-titulo">Esse drink não está no cardápio</h2>
+      <p class="erro-texto">
+        A página que você procurou derramou pelo caminho. Mas relaxa: o bar continua aberto!
+      </p>
+
+      <div class="erro-botoes">
+        <a href="index.html" class="neon-button inline-btn">Voltar ao Início</a>
+        <a href="contato.html" class="neon-button neon-button-pink inline-btn">Pedir Orçamento</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

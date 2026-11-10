@@ -4,7 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contato | Drinkeiras</title>
+  <meta name="description" content="Solicite um orçamento de bar e drinks autorais para o seu evento direto pelo WhatsApp.">
   <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Drinkeiras">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Peça seu orçamento | Drinkeiras">
+  <meta property="og:description" content="Conte como é o seu evento e receba um orçamento personalizado direto no WhatsApp.">
+  <meta property="og:url" content="https://henriquemaiadev.github.io/DrinkeirasWeb/contato.html">
+  <meta property="og:image" content="https://henriquemaiadev.github.io/DrinkeirasWeb/images/og-capa.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#08090d">
 
   <!-- Google Fonts: Zen Dots + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,51 +48,127 @@
       <div class="container">
         
         <!-- CARD DO FORMULÁRIO -->
-        <div class="contact-card reveal">
+        <div class="contact-card borda-giratoria reveal">
           <h1 class="neon-title neon-text-pink contact-title">Fale com as Drinkeiras</h1>
           <p class="contact-subtitle">
             Preencha os dados abaixo e receba um orçamento personalizado no seu WhatsApp.
           </p>
 
-          <form id="contactForm" class="contact-form">
+          <form id="contactForm" class="contact-form" novalidate>
             <div class="form-field">
               <label for="nome">Seu Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" autocomplete="name" minlength="3" required>
+              <span class="field-error" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="tipo">Tipo de Evento</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>Casamento</option>
+                  <option>Formatura</option>
+                  <option>Aniversário</option>
+                  <option>Evento Corporativo</option>
+                  <option>Festa Particular</option>
+                  <option>Outro</option>
+                </select>
+                <span class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="data">Data do Evento</label>
+                <input type="date" id="data" name="data" required>
+                <span class="field-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="convidados">Nº de Convidados</label>
+                <input type="number" id="convidados" name="convidados" placeholder="Ex: 150" min="10" max="5000" inputmode="numeric" required>
+                <span class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Ex: Ribeirão Preto" list="cidades" required>
+                <datalist id="cidades">
+                  <option value="Ribeirão Preto">
+                  <option value="Sertãozinho">
+                  <option value="Jardinópolis">
+                  <option value="Cravinhos">
+                  <option value="Serrana">
+                  <option value="Brodowski">
+                  <option value="Batatais">
+                  <option value="Franca">
+                  <option value="Araraquara">
+                  <option value="São Carlos">
+                </datalist>
+                <span class="field-error" aria-live="polite"></span>
+              </div>
             </div>
 
             <div class="form-field">
-              <label for="data">Data do Evento</label>
-              <input type="text" id="data" name="data" placeholder="Ex: 15/11/2026" required>
+              <label for="detalhes">Detalhes <span class="label-opcional">(opcional)</span></label>
+              <textarea id="detalhes" name="detalhes" rows="4" maxlength="600" placeholder="Estilo da festa, drinks que você ama, horário, local..."></textarea>
+              <span class="char-counter" id="contador">0 / 600</span>
             </div>
 
-            <div class="form-field">
-              <label for="detalhes">Detalhes (Tipo de festa, número estimado de convidados)</label>
-              <textarea id="detalhes" name="detalhes" rows="4" placeholder="Conte-nos um pouco sobre a ideia do seu evento..." required></textarea>
+            <!-- Prévia ao vivo da mensagem que vai pro WhatsApp -->
+            <div class="msg-preview" aria-live="polite">
+              <span class="msg-preview-label">Prévia da mensagem</span>
+              <div class="msg-bubble" id="previewMensagem"></div>
             </div>
 
             <button type="submit" class="neon-button">Enviar mensagem no WhatsApp</button>
           </form>
         </div>
 
-        <!-- SEÇÃO FAQ (PERGUNTAS FREQUENTES) -->
+        <!-- SEÇÃO FAQ (PERGUNTAS FREQUENTES) — acordeão com <details> -->
         <div class="faq-container reveal">
-          <h2 class="neon-title neon-text-cyan text-center" style="margin-bottom: 30px;">Dúvidas Frequentes</h2>
-          
-          <div class="faq-grid">
-            <div class="faq-card">
-              <h3 class="faq-question">Como funciona a estrutura e insumos?</h3>
+          <h2 class="neon-title neon-text-cyan text-center faq-title">Dúvidas Frequentes</h2>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary class="faq-question">Como funciona a estrutura e os insumos?</summary>
               <p class="faq-answer">Cuidamos de tudo! Fornecemos a estrutura modular de bar, insumos premium, frutas frescas, gelo especial, copos e uma carta de drinks 100% personalizada.</p>
-            </div>
+            </details>
 
-            <div class="faq-card">
-              <h3 class="faq-question">Quais regiões vocês atendem?</h3>
-              <p class="faq-answer">Atendemos Ribeirão Preto e toda a região para casamentos, formaturas, festas de aniversário e eventos corporativos.</p>
-            </div>
+            <details class="faq-item">
+              <summary class="faq-question">Quais regiões vocês atendem?</summary>
+              <p class="faq-answer">Atendemos Ribeirão Preto e toda a região para casamentos, formaturas, festas de aniversário e eventos corporativos. Para outras cidades, consulte a taxa de deslocamento.</p>
+            </details>
 
-            <div class="faq-card">
-              <h3 class="faq-question">Com quanta antecedência devo reservar?</h3>
-              <p class="faq-answer">Recomendamos solicitar a reserva com no mínimo 15 a 30 dias de antecedência para garantirmos a disponibilidade da equipe na data desejada.</p>
-            </div>
+            <details class="faq-item">
+              <summary class="faq-question">Com quanta antecedência devo reservar?</summary>
+              <p class="faq-answer">Recomendamos reservar com no mínimo 15 a 30 dias de antecedência. Para casamentos e formaturas em alta temporada, o ideal é de 3 a 6 meses.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Posso escolher os drinks do cardápio?</summary>
+              <p class="faq-answer">Sim! Montamos a carta junto com você. Dá pra misturar clássicos, nossos autorais e até criar um drink exclusivo com o nome dos noivos ou do formando.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Vocês têm opções sem álcool?</summary>
+              <p class="faq-answer">Temos sim. Os mocktails usam as mesmas técnicas e apresentação dos drinks tradicionais, então ninguém fica de fora da experiência, nem crianças, gestantes ou quem vai dirigir.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Quantos bartenders vão no meu evento?</summary>
+              <p class="faq-answer">Depende do número de convidados e do cardápio. Em média, trabalhamos com 1 bartender para cada 50 a 70 convidados, garantindo atendimento rápido e sem filas.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Quanto tempo de serviço está incluso?</summary>
+              <p class="faq-answer">Nossos pacotes normalmente cobrem de 4 a 6 horas de bar aberto, mas tudo pode ser ajustado. Horas extras podem ser contratadas no próprio dia.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Como funciona o pagamento?</summary>
+              <p class="faq-answer">Para garantir a data, pedimos um sinal na assinatura do contrato e o restante até a semana do evento. Aceitamos Pix, transferência e cartão.</p>
+            </details>
           </div>
         </div>
 
@@ -105,8 +195,8 @@
 
       <div class="footer-info">
         <h4>Contato Direto</h4>
-        <p><strong>WhatsApp:</strong> (16) 99389-2832</p>
-        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank">@drinkeiras.bar</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5516993892832" target="_blank" rel="noopener">(16) 99389-2832</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" rel="noopener">@drinkeiras.bar</a></p>
       </div>
     </div>
 
@@ -117,11 +207,11 @@
 
   <!-- Botões Flutuantes -->
   <div class="floating-contact">
-    <a href="https://wa.me/5516993892832" target="_blank" aria-label="WhatsApp" class="neon-float">
-      <img src="images/whats.webp" alt="WhatsApp">
+    <a href="https://wa.me/5516993892832" target="_blank" rel="noopener" aria-label="WhatsApp" class="neon-float">
+      <img src="images/whats.webp" alt="">
     </a>
-    <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" aria-label="Instagram" class="neon-float">
-      <img src="images/instagram.png" alt="Instagram">
+    <a href="https://www.instagram.com/drinkeiras.bar/" target="_blank" rel="noopener" aria-label="Instagram" class="neon-float">
+      <img src="images/instagram.webp" alt="">
     </a>
   </div>
 

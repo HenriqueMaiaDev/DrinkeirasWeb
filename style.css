@@ -1,63 +1,4 @@
 /* =========================================
-   EFEITO CORTINA NEON (PAGE TRANSITION)
-========================================= */
-/* Borda/Faixa neon brilhante que cruza a tela */
-
-::view-transition-old(root) {
-  animation: slideOutLeft 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-
-::view-transition-new(root) {
-  animation: slideInRight 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-  box-shadow: -15px 0 35px var(--neon-cyan), -30px 0 60px var(--neon-pink);
-}
-
-@keyframes slideOutLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-/* Ativa a transição entre navegações de páginas diferentes */
-@view-transition {
-  navigation: auto;
-}
-
-/* Personaliza a animação de entrada e saída da tela */
-::view-transition-old(root) {
-  animation: fadeOut 0.3s ease-out forwards;
-}
-
-::view-transition-new(root) {
-  animation: fadeIn 0.4s ease-in forwards;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.98); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(1.02); }
-  to { opacity: 1; transform: scale(1); }
-}
-/* Nome de transição único para o logo */
-/* Mapeia o logo para o motor de View Transition */
-.logo-img-nav {
-  view-transition-name: main-brand-logo;
-  contain: layout;
-}
-/* Cortina Neon de Transição */
-/* Previne barras de rolagem indesejadas na transição */
-body {
-  overflow-x: hidden;
-}
-
-/* =========================================
    CORTINA NEON DIRECIAL (CORRIGIDO)
 ========================================= */
 .neon-curtain {
@@ -126,7 +67,7 @@ html {
   
   /* NOVAS FONTES DECLARADAS AQUI */
   --font-title: 'Zen Dots', cursive, sans-serif;
-  --font-body: 'Slabo 13px', serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
 }
 
 body {
@@ -296,13 +237,6 @@ p {
   margin-top: -10px;
 }
 
-.sobre-box p {
-  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
-  max-width: 720px;
-  color: #e0e6f0;
-  margin: 0 auto;
-}
-
 /* =========================================
    5. CONTAINERS & CARDS INTERATIVOS (TILT 3D)
 ========================================= */
@@ -383,42 +317,12 @@ p {
   margin: 14px auto 40px;
 }
 
-.galeria-filtros {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
-}
-
-.filtro-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-main);
-  padding: 14px 32px;
-  border-radius: 40px;
-  font-family: var(--font-title);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filtro-btn:hover,
-.filtro-btn.active {
-  background: var(--neon-cyan);
-  color: #000;
-  border-color: var(--neon-cyan);
-  box-shadow: var(--shadow-neon-cyan);
-}
-
 .galeria-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* min(320px, 100%) evita que o card estoure a tela em celulares estreitos */
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 28px;
 }
-
-.galeria-item { transition: opacity 0.4s ease, transform 0.4s ease; }
-.galeria-item.hide { display: none; }
 
 .galeria-overlay {
   position: absolute;
@@ -434,6 +338,11 @@ p {
 }
 
 .drink-card:hover .galeria-overlay { opacity: 1; }
+
+/* Celular/tablet não tem hover: mostra o nome do drink sempre */
+@media (hover: none) {
+  .galeria-overlay { opacity: 1; }
+}
 
 .categoria-tag {
   color: var(--neon-pink);
@@ -519,6 +428,7 @@ p {
   font-size: 1.2rem;
   outline: none;
   transition: all 0.3s ease;
+  color-scheme: dark; /* deixa o ícone do calendário visível no fundo escuro */
 }
 
 .form-field input:focus,
@@ -768,26 +678,19 @@ p {
 
 @media (max-width: 600px) {
   html { font-size: 16px; }
-  .nav-container { gap: 10px; }
-  .nav-btn { padding: 8px 16px; font-size: 0.75rem; }
+  .nav-container { gap: 8px; flex-wrap: wrap; padding: 0 10px; }
+  .nav-logo { margin-right: 2px; }
+  .nav-btn { padding: 8px 12px; font-size: 0.72rem; letter-spacing: 0.5px; }
   .nome { letter-spacing: 4px; }
+  .subtitulo-hero { letter-spacing: 1px; }
   .floating-contact { bottom: 16px; right: 16px; }
 }
 
-/* Espaçamento da página Sobre */
-.sobre-main {
-  padding-top: 100px;
-}
-
+/* Estilização da Página Sobre (Sem Imagens) */
 .sobre-section {
   padding-top: 60px;
 }
 
-.mixologia-section {
-  padding-bottom: 80px;
-}
-
-/* Estilização da Página Sobre (Sem Imagens) */
 .sobre-main {
   padding-top: 130px;
   padding-bottom: 80px;
@@ -823,36 +726,1024 @@ p {
   margin-top: 60px;
 }
 
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+.faq-title { margin-bottom: 30px; }
+
+.faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.faq-card {
+.faq-item {
   background: var(--bg-card);
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  border-radius: var(--radius);
-  padding: 28px;
+  border: 1px solid rgba(0, 243, 255, 0.18);
+  border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
 }
 
-.faq-card:hover {
-  border-color: var(--neon-cyan);
-  transform: translateY(-4px);
+.faq-item:hover { border-color: rgba(0, 243, 255, 0.5); transform: translateX(4px); }
+
+.faq-item[open] {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 22px rgba(255, 0, 127, 0.25), 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* A pergunta (parte clicável) */
 .faq-question {
+  list-style: none;              /* tira o triângulo padrão */
+  cursor: pointer;
+  position: relative;
+  padding: 22px 64px 22px 26px;
   font-family: var(--font-title);
   font-size: 0.95rem;
   color: var(--neon-pink);
-  margin-bottom: 12px;
   line-height: 1.4;
+  user-select: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+
+/* Ícone "+" que vira "×" quando abre */
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s, color 0.3s;
+}
+
+.faq-item[open] .faq-question::after {
+  transform: rotate(45deg);
+  background: var(--neon-cyan);
+  color: #000;
 }
 
 .faq-answer {
+  padding: 0 26px 24px;
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+/* Resposta desliza ao abrir */
+.faq-item[open] .faq-answer { animation: faqAbrir 0.4s ease; }
+
+@keyframes faqAbrir {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* =========================================
+   11. FORMULÁRIO DE ORÇAMENTO (CAMPOS EXTRAS)
+========================================= */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.form-field select {
+  appearance: none;
+  background: rgba(8, 9, 13, 0.9)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2300f3ff' stroke-width='2' fill='none'/%3E%3C/svg%3E")
+    no-repeat right 20px center;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px 48px 16px 20px;
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  outline: none;
+  cursor: pointer;
+  color-scheme: dark;
+  transition: all 0.3s ease;
+}
+
+.form-field select:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.35);
+}
+
+.form-field select:invalid { color: rgba(255, 255, 255, 0.45); }
+.form-field option { background: var(--bg-card); color: #fff; }
+
+.label-opcional {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+/* Erro de validação */
+.field-error:empty { display: none; }
+.field-error {
+  margin-top: -4px;
+  font-size: 0.9rem;
+  color: var(--neon-pink);
+}
+
+.form-field.invalid input,
+.form-field.invalid select {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 14px rgba(255, 0, 127, 0.35);
+  animation: tremer 0.4s ease;
+}
+
+@keyframes tremer {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+
+.form-field.valid input,
+.form-field.valid select {
+  border-color: rgba(0, 243, 255, 0.55);
+}
+
+.char-counter {
+  align-self: flex-end;
+  margin-top: -4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.char-counter.quase-cheio { color: var(--neon-pink); }
+
+/* Prévia estilo balão do WhatsApp */
+.msg-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg-preview-label {
+  color: var(--neon-cyan);
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+}
+
+.msg-bubble {
+  position: relative;
+  align-self: flex-end;
+  max-width: 100%;
+  min-width: 60%;
+  background: #005c4b;
+  color: #e9edef;
+  padding: 14px 18px 22px;
+  border-radius: 14px 0 14px 14px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.msg-bubble::before {           /* "biquinho" do balão */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  border-top: 12px solid #005c4b;
+  border-right: 12px solid transparent;
+}
+
+.msg-bubble::after {            /* hora + ✓✓ */
+  content: attr(data-hora) " ✓✓";
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+  font-size: 0.72rem;
+  color: #8fd3c4;
+}
+
+.msg-bubble.pulsar { transform: scale(1.015); }
+.msg-bubble strong { color: #fff; }
+
+/* =========================================
+   12. CONTADORES ANIMADOS
+========================================= */
+.stats-section {
+  position: relative;
+  padding: clamp(50px, 7vw, 90px) 0;
+  border-top: 1px solid rgba(255, 0, 127, 0.25);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.25);
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 0, 127, 0.12), transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 243, 255, 0.12), transparent 60%);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 28px 16px;
+  background: rgba(18, 21, 32, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+  transform: translateY(-6px);
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 8px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+}
+
+.stat-card:nth-child(even) .stat-number {
+  text-shadow: 0 0 8px #fff, 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+}
+
+/* Brilho extra quando o contador termina */
+.stat-number.concluido { animation: estourar 0.5s ease; }
+
+@keyframes estourar {
+  50% { transform: scale(1.15); }
+}
+
+.stat-label {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   13. ANIMAÇÕES DINÂMICAS
+========================================= */
+
+/* Menu fica mais compacto depois de rolar */
+.top-nav { transition: padding 0.35s ease, background 0.35s ease, box-shadow 0.35s ease; }
+.top-nav.scrolled {
+  padding: 8px 0;
+  background: rgba(8, 9, 13, 0.95);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 0, 127, 0.3);
+}
+
+/* Elementos em sequência (o JS define --delay) */
+.reveal { transition-delay: var(--delay, 0s); }
+
+/* Letreiro neon piscando como placa de bar */
+.neon-flicker { animation: piscar 6s infinite; }
+
+@keyframes piscar {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.35; }
+}
+
+/* Logo do hero flutuando */
+.logo-img-hero { animation: flutuar 5s ease-in-out infinite; }
+
+@keyframes flutuar {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+/* Camadas do hero */
+.hero { overflow: hidden; }
+.hero-content { z-index: 3; }
+
+/* Bolhas subindo */
+.hero-bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.05) 60%);
+  box-shadow: 0 0 8px var(--cor, var(--neon-cyan));
+  opacity: 0;
+  animation: subir var(--dur, 10s) linear var(--atraso, 0s) infinite;
+}
+
+@keyframes subir {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.8; }
+  50%  { transform: translate(var(--balanco, 20px), -55vh); }
+  90%  { opacity: 0.6; }
+  100% { transform: translate(0, -110vh); opacity: 0; }
+}
+
+/* Luz que segue o mouse no hero */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    450px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 243, 255, 0.14),
+    rgba(255, 0, 127, 0.06) 40%,
+    transparent 70%
+  );
+}
+.hero:hover .hero-spotlight { opacity: 1; }
+
+/* Indicador "role para baixo" */
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color 0.3s, opacity 0.4s;
+}
+.scroll-cue:hover { color: var(--neon-cyan); }
+.scroll-cue.sumir { opacity: 0; pointer-events: none; }
+
+.scroll-cue-arrow {
+  width: 22px;
+  height: 36px;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+}
+
+.scroll-cue-arrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--neon-cyan);
+  animation: rolinho 1.6s ease-in-out infinite;
+}
+
+@keyframes rolinho {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* Brilho que atravessa os botões neon */
+.neon-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.neon-button:hover::before { left: 125%; }
+
+/* Variante rosa do botão */
+.neon-button-pink {
+  color: var(--neon-pink);
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+}
+.neon-button-pink:hover {
+  background: var(--neon-pink);
+  color: #fff;
+  box-shadow: var(--shadow-neon-pink);
+}
+
+/* Anel pulsando no botão do WhatsApp */
+.neon-float { position: relative; }
+.neon-float:first-child::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: pulso 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulso {
+  0%   { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* =========================================
+   14. PÁGINA 404
+========================================= */
+.erro-main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 130px 20px 60px;
+}
+
+.erro-card {
+  text-align: center;
+  max-width: 720px;
+}
+
+.erro-codigo {
+  font-family: var(--font-title);
+  font-size: clamp(6rem, 22vw, 12rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 10px;
+}
+
+.erro-titulo { margin-top: 10px; }
+
+.erro-texto {
+  margin: 18px auto 10px;
+  max-width: 520px;
+}
+
+.erro-botoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Taça que tomba e derrama */
+.erro-taca {
+  position: relative;
+  width: 120px;
+  height: 110px;
+  margin: 0 auto 10px;
+}
+
+.taca {
+  display: inline-block;
+  font-size: 4.5rem;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 0 12px var(--neon-pink));
+  animation: tombar 4s ease-in-out infinite;
+}
+
+@keyframes tombar {
+  0%, 15%   { transform: rotate(0deg); }
+  30%, 70%  { transform: rotate(-70deg) translateX(-6px); }
+  85%, 100% { transform: rotate(0deg); }
+}
+
+.gota {
+  position: absolute;
+  top: 58px;
+  left: 30px;
+  width: 8px;
+  height: 12px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  opacity: 0;
+  animation: pingar 4s ease-in infinite;
+}
+.g2 { left: 22px; animation-delay: 0.2s; }
+.g3 { left: 36px; animation-delay: 0.4s; }
+
+@keyframes pingar {
+  0%, 32%  { opacity: 0; transform: translateY(0); }
+  36%      { opacity: 1; }
+  60%      { opacity: 0; transform: translateY(60px); }
+  100%     { opacity: 0; }
+}
+
+/* =========================================
+   15. ANIMAÇÕES EXTRAS
+========================================= */
+
+/* ---------- Taça que enche conforme rola ---------- */
+.taca-progresso {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 99;
+  width: 58px;
+  height: 58px;
+  padding: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--neon-pink);
+  background: var(--bg-card);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow-neon-pink);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.taca-progresso:hover { transform: scale(1.12) rotate(-8deg); }
+.taca-progresso svg { width: 100%; height: 100%; overflow: visible; }
+
+.taca-liquido {
+  transform-box: fill-box;       /* faz o "bottom" ser o fundo do próprio retângulo */
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 0.15s linear;
+}
+
+/* Azeitona aparece quando a taça enche */
+.taca-azeitona {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.taca-progresso.cheia {
+  box-shadow: 0 0 25px var(--neon-cyan), 0 0 50px var(--neon-pink);
+}
+.taca-progresso.cheia .taca-azeitona { opacity: 1; transform: translateY(0); }
+
+/* Bolhinhas que saem da taça cheia */
+.taca-bolhas i {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 6px var(--neon-cyan);
+  opacity: 0;
+}
+
+.taca-progresso.cheia .taca-bolhas i { animation: tacaBolha 1.4s ease-out infinite; }
+.taca-progresso.cheia .taca-bolhas i:nth-child(2) { left: 38%; animation-delay: 0.45s; }
+.taca-progresso.cheia .taca-bolhas i:nth-child(3) { left: 60%; animation-delay: 0.9s; }
+
+@keyframes tacaBolha {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-34px) scale(1.2); opacity: 0; }
+}
+
+/* ---------- Faixas infinitas com nomes dos drinks ---------- */
+.faixas {
+  position: relative;
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.faixa {
+  width: 110%;
+  margin-left: -5%;
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.faixa-rosa {
+  background: var(--neon-pink);
+  color: #fff;
+  transform: rotate(-3deg);
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
+  position: relative;
+  z-index: 2;
+}
+
+.faixa-ciano {
+  margin-top: -18px;
+  background: rgba(8, 9, 13, 0.92);
+  color: var(--neon-cyan);
+  border-block: 1.5px solid var(--neon-cyan);
+  transform: rotate(2deg);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
+}
+
+.faixa-trilho {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  animation: faixaAndar 30s linear infinite;
+}
+
+.faixa-ciano .faixa-trilho { animation-direction: reverse; }
+
+.faixa span {
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.faixa i {
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+/* Anda metade do trilho; como o conteúdo é repetido 2x, o loop não tem emenda */
+@keyframes faixaAndar {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------- Galeria: líquido subindo no hover ---------- */
+.galeria-item .drink-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14'%3E%3Cpath d='M0 7 Q15 0 30 7 T60 7 T90 7 T120 7 V14 H0Z' fill='%23ff007f' fill-opacity='0.35'/%3E%3C/svg%3E") repeat-x 0 0 / 120px 14px,
+    linear-gradient(to top, rgba(255, 0, 127, 0.45), rgba(157, 0, 255, 0.25) 60%, rgba(0, 243, 255, 0.15)) no-repeat 0 13px / 100% 100%;
+  transform: translateY(101%);
+  transition: transform 0.9s cubic-bezier(0.3, 0.8, 0.3, 1);
+}
+
+/* A onda só se mexe enquanto o mouse está em cima (antes rodava sempre, à toa) */
+.galeria-item .drink-card:hover::before {
+  transform: translateY(45%);
+  animation: onda 1.6s linear infinite;
+}
+
+@keyframes onda {
+  to { background-position: 120px 0, 0 13px; }
+}
+
+.card-bolha {
+  position: absolute;
+  bottom: -12px;
+  z-index: 2;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.drink-card:hover .card-bolha {
+  animation: cardBolha var(--dur, 2s) ease-in var(--atraso, 0s) infinite;
+}
+
+@keyframes cardBolha {
+  0%   { transform: translateY(0); opacity: 0; }
+  15%  { opacity: 0.9; }
+  100% { transform: translateY(-260px); opacity: 0; }
+}
+
+/* ---------- Títulos neon ligando letra por letra ---------- */
+.neon-title .palavra { display: inline-block; white-space: nowrap; }
+.neon-title .letra   { display: inline-block; opacity: 0.12; }
+
+.neon-title.acesa .letra {
+  animation: ligarLetra 0.7s ease forwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+@keyframes ligarLetra {
+  0%   { opacity: 0.12; }
+  30%  { opacity: 1; }
+  45%  { opacity: 0.3; }
+  60%  { opacity: 1; }
+  75%  { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* ---------- Borda neon girando ---------- */
+/* @property permite animar uma variável CSS (aqui, um ângulo) */
+@property --angulo {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.borda-giratoria { position: relative; }
+
+.borda-giratoria::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;                   /* espessura da borda */
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(from var(--angulo),
+    transparent 0deg 220deg,
+    var(--neon-pink) 270deg,
+    var(--neon-cyan) 330deg,
+    transparent 360deg);
+  /* Máscara: mostra só a "moldura", não o meio */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: girarBorda 4s linear infinite;
+}
+
+@keyframes girarBorda {
+  to { --angulo: 360deg; }
+}
+
+/* ---------- Máquina de escrever ---------- */
+.subtitulo-hero.digitando { min-height: 1.6em; }
+
+.subtitulo-hero.digitando::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  margin-left: 4px;
+  vertical-align: -0.12em;
+  background: var(--neon-pink);
+  box-shadow: 0 0 8px var(--neon-pink);
+  animation: piscarCursor 0.8s steps(1) infinite;
+}
+
+@keyframes piscarCursor {
+  50% { opacity: 0; }
+}
+
+/* ---------- Respingo ao clicar ---------- */
+.respingo {
+  position: fixed;
+  z-index: 99997;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ---------- Confete ---------- */
+.confete {
+  position: fixed;
+  top: 0;
+  z-index: 99996;
+  border-radius: 2px;
+  pointer-events: none;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Brinde ao enviar o formulário ---------- */
+.brinde {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 20px;
+  background: rgba(8, 9, 13, 0.82);
+  backdrop-filter: blur(6px);
+  animation: aparecer 0.3s ease;
+}
+
+.brinde.saindo { opacity: 0; transition: opacity 0.5s ease; }
+
+@keyframes aparecer { from { opacity: 0; } }
+
+.brinde-tacas {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  font-size: clamp(4rem, 14vw, 7rem);
+}
+
+.brinde-taca { display: inline-block; filter: drop-shadow(0 0 14px var(--neon-pink)); }
+.brinde-taca.esquerda { animation: tacaEsquerda 0.9s cubic-bezier(.3, 1.4, .5, 1) forwards; }
+.brinde-taca.direita  { animation: tacaDireita 0.9s cubic-bezier(.3, 1.4, .5, 1) forwards; }
+
+@keyframes tacaEsquerda {
+  0%   { transform: translateX(-60vw) rotate(-30deg); }
+  60%  { transform: translateX(12px) rotate(18deg); }
+  75%  { transform: translateX(0) rotate(10deg); }
+  100% { transform: translateX(4px) rotate(14deg); }
+}
+
+@keyframes tacaDireita {
+  0%   { transform: scaleX(-1) translateX(-60vw) rotate(-30deg); }
+  60%  { transform: scaleX(-1) translateX(12px) rotate(18deg); }
+  75%  { transform: scaleX(-1) translateX(0) rotate(10deg); }
+  100% { transform: scaleX(-1) translateX(4px) rotate(14deg); }
+}
+
+/* Faísca no momento do "tim" */
+.brinde-faisca {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 30px #fff, 0 0 60px var(--neon-cyan), 0 0 90px var(--neon-pink);
+  opacity: 0;
+  animation: faisca 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes faisca {
+  0%   { opacity: 0; transform: scale(0); }
+  30%  { opacity: 1; transform: scale(2.5); }
+  100% { opacity: 0; transform: scale(4); }
+}
+
+.brinde-texto {
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #fff;
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 25px var(--neon-cyan);
+  opacity: 0;
+  animation: textoBrinde 0.4s ease 0.6s forwards;
+}
+
+@keyframes textoBrinde {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Modo Festa (easter egg) ---------- */
+.logo-img-hero,
+.footer-brand h3 { cursor: pointer; }
+
+.cutucada { animation: cutucar 0.3s ease; }
+
+@keyframes cutucar {
+  50% { scale: 1.15; }
+}
+
+/* As cores do site ficam girando no arco-íris */
+body.modo-festa main,
+body.modo-festa .hero,
+body.modo-festa .site-footer {
+  animation: arcoIris 2.5s linear infinite;
+}
+
+@keyframes arcoIris {
+  to { filter: hue-rotate(360deg); }
+}
+
+body.modo-festa .logo-img-hero { animation: girarLogo 1.2s linear infinite; }
+
+@keyframes girarLogo {
+  to { rotate: 360deg; }
+}
+
+/* Luzes de balada (movimento lento, sem piscar forte — seguro para fotossensíveis) */
+.festa-luzes {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 0, 127, 0.35), transparent 35%),
+    radial-gradient(circle at 80% 40%, rgba(0, 243, 255, 0.35), transparent 35%),
+    radial-gradient(circle at 50% 85%, rgba(157, 0, 255, 0.35), transparent 40%);
+  background-size: 200% 200%;
+  animation: luzesBalada 3s ease-in-out infinite alternate, aparecer 0.6s ease;
+}
+
+@keyframes luzesBalada {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 50% 100%; }
+}
+
+.festa-aviso {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 99995;
+  padding: 14px 28px;
+  border-radius: 40px;
+  background: var(--bg-card);
+  border: 2px solid var(--neon-pink);
+  box-shadow: var(--shadow-neon-pink);
+  font-family: var(--font-title);
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  color: #fff;
+  white-space: nowrap;
+  animation: avisoEntrar 0.5s cubic-bezier(.3, 1.5, .5, 1);
+  transition: opacity 0.5s, translate 0.5s;
+}
+
+.festa-aviso.saindo { opacity: 0; translate: -50% -20px; }
+
+@keyframes avisoEntrar {
+  from { opacity: 0; translate: -50% -30px; scale: 0.8; }
+}
+
+/* ---------- Desempenho ---------- */
+/* O JS coloca esta classe quando o bloco sai da tela: as animações dele pausam */
+.fora-da-tela,
+.fora-da-tela *,
+.fora-da-tela::before,
+.fora-da-tela::after,
+.fora-da-tela *::before,
+.fora-da-tela *::after {
+  animation-play-state: paused !important;
+}
+
+/* Modo leve: ligado pelo JS em computadores/celulares mais fracos */
+.modo-leve .top-nav,
+.modo-leve .info-card {
+  backdrop-filter: none;           /* desfoque é caro de calcular ao rolar */
+}
+.modo-leve .top-nav { background: rgba(8, 9, 13, 0.97); }
+.modo-leve .info-card { background: rgba(18, 21, 32, 0.97); }
+.modo-leve .hero-spotlight { display: none; }
+.modo-leve .neon-ray { filter: none; }
+.modo-leve .bubble { box-shadow: none; }
+
+/* =========================================
+   16. RESPONSIVO DOS BLOCOS NOVOS
+========================================= */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+  .stats-grid { gap: 14px; }
+  .stat-card { padding: 22px 10px; }
+  .stat-label { font-size: 0.8rem; }
+  .faq-question { padding: 18px 58px 18px 18px; font-size: 0.85rem; }
+  .faq-answer { padding: 0 18px 20px; }
+  .scroll-cue-text { display: none; }
+  .taca-progresso { left: 16px; bottom: 16px; width: 50px; height: 50px; padding: 6px; }
+  .faixas { padding: 36px 0; }
+  .faixa-trilho { gap: 18px; padding-right: 18px; }
+}
+
+/* =========================================
+   17. ACESSIBILIDADE
+========================================= */
+/* Contorno visível para quem navega pelo teclado (Tab) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 3px;
+}
+
+/* Respeita quem pediu "menos animação" nas configurações do sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+  .neon-rays-container,
+  .hero-bubbles,
+  .hero-spotlight,
+  .gota,
+  .festa-luzes { display: none; }
+
+  .neon-flicker,
+  .logo-img-hero,
+  .borda-giratoria::before { animation: none !important; }
 }
